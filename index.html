@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white text-center py-4">
+                        <h1 class="mb-0">Register</h1>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <form id="registrationForm" novalidate>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                    <span class="error-message text-danger small" id="firstNameError"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                    <span class="error-message text-danger small" id="lastNameError"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                                    <span class="error-message text-danger small" id="usernameError"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                                    <span class="error-message text-danger small" id="phoneNumberError"></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your E-Mail Address" required>
+                                <span class="error-message text-danger small" id="emailError"></span>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <select class="form-select" id="gender" name="gender" required>
+                                        <option value="">Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                        <option value="prefer-not-to-say">Prefer not to say</option>
+                                    </select>
+                                    <span class="error-message text-danger small" id="genderError"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="dob" name="dob" placeholder="Date Of Birth : DD/MM/YY" required>
+                                    <span class="error-message text-danger small" id="dobError"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <select class="form-select" id="country" name="country" required>
+                                        <option value="">Country</option>
+                                        <option value="us">United States</option>
+                                        <option value="uk">United Kingdom</option>
+                                        <option value="ca">Canada</option>
+                                        <option value="au">Australia</option>
+                                        <option value="ph">Philippines</option>
+                                        <option value="in">India</option>
+                                        <option value="sg">Singapore</option>
+                                        <option value="my">Malaysia</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <span class="error-message text-danger small" id="countryError"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" id="company" name="company" placeholder="Your Company's Name">
+                                    <span class="error-message text-danger small" id="companyError"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                    <span class="error-message text-danger small" id="passwordError"></span>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                                    <span class="error-message text-danger small" id="confirmPasswordError"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                                <label class="form-check-label" for="agreeTerms">
+                                    I agree with the terms & conditions.
+                                </label>
+                                <span class="error-message text-danger small d-block" id="agreeTermsError"></span>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="receiveOffers" name="receiveOffers">
+                                <label class="form-check-label" for="receiveOffers">
+                                    Recieve best offers and updates.
+                                </label>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="validation.js"></script>
+</body>
+</html>
