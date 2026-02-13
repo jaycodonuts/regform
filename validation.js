@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const dob = document.getElementById('dob');
     const country = document.getElementById('country');
     const company = document.getElementById('company');
-    const homeAddress = document.getElementById('homeAddress');
-    const officeAddress = document.getElementById('officeAddress');
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirmPassword');
     const agreeTerms = document.getElementById('agreeTerms');
@@ -72,11 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         validateSelect(this, 'countryError', 'Country');
     });
     
-    // Validation for text areas
-    homeAddress.addEventListener('input', function() {
-        validateRequired(this, 'homeAddressError', 'Home Address');
-    });
-    
     // Form submission validation
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -92,14 +85,13 @@ document.addEventListener('DOMContentLoaded', function() {
         isValid = validateSelect(gender, 'genderError', 'Gender') && isValid;
         isValid = validateDOB(dob) && isValid;
         isValid = validateSelect(country, 'countryError', 'Country') && isValid;
-        isValid = validateRequired(homeAddress, 'homeAddressError', 'Home Address') && isValid;
         isValid = validatePassword(password) && isValid;
         isValid = validateConfirmPassword(confirmPassword) && isValid;
         isValid = validateCheckbox(agreeTerms) && isValid;
         
         if (isValid) {
             // If form is valid, show success message
-            alert('Registration successful! Form data is valid.');
+            showSuccessToast('Registration successful! Form data is valid.');
             
             // You can submit the form data to a server here
             // For now, we'll just log the data to console
@@ -113,17 +105,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 dob: dob.value,
                 country: country.value,
                 company: company.value,
-                homeAddress: homeAddress.value,
-                officeAddress: officeAddress.value,
                 agreeTerms: agreeTerms.checked,
                 receiveOffers: document.getElementById('receiveOffers').checked
             });
             
-            // Reset form after successful submission
-            // form.reset();
-            // clearAllErrors();
+            // Refresh page after showing success message
+            setTimeout(function() {
+                location.reload();
+            }, 2000); // 2 second delay to show the success message
         } else {
-            alert('Please correct all errors before submitting.');
+            showErrorToast('Please fill out all required information!');
         }
     });
     
@@ -385,5 +376,49 @@ document.addEventListener('DOMContentLoaded', function() {
         errorFields.forEach(function(element) {
             element.classList.remove('error');
         });
+    }
+    
+    /**
+     * Show error toast notification
+     */
+    function showErrorToast(message) {
+        const toastElement = document.getElementById('validationToast');
+        const toastMessage = document.getElementById('toastMessage');
+        
+        // Set message
+        toastMessage.textContent = message;
+        
+        // Change to error style
+        toastElement.classList.remove('bg-success');
+        toastElement.classList.add('bg-danger');
+        
+        // Show toast
+        const toast = new bootstrap.Toast(toastElement, {
+            autohide: true,
+            delay: 4000
+        });
+        toast.show();
+    }
+    
+    /**
+     * Show success toast notification
+     */
+    function showSuccessToast(message) {
+        const toastElement = document.getElementById('validationToast');
+        const toastMessage = document.getElementById('toastMessage');
+        
+        // Set message
+        toastMessage.textContent = message;
+        
+        // Change to success style
+        toastElement.classList.remove('bg-danger');
+        toastElement.classList.add('bg-success');
+        
+        // Show toast
+        const toast = new bootstrap.Toast(toastElement, {
+            autohide: true,
+            delay: 4000
+        });
+        toast.show();
     }
 });
